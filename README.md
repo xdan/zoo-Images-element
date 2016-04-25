@@ -7,3 +7,8 @@ You can use this from item template like this
 ```
 
 ![ScreenShot](https://raw.github.com/xdan/zoo-Images-element/master/screen/screen.png)
+
+![ScreenShot](https://raw.github.com/xdan/zoo-Images-element/master/screen/screen2.jpg)
+
+![ScreenShot](https://raw.github.com/xdan/zoo-Images-element/master/screen/screen3.jpg)
+

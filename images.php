@@ -80,6 +80,12 @@ class ElementImages extends Element {
     }
 	public function render($params = array()) {
         JHtml::addIncludePath(dirname(__FILE__));
+        $this->app->document->addScript('assets:js/lightbox.js');
+        $this->app->document->addStylesheet('assets:css/lightbox.css');
+        $this->app->document->addScriptDeclaration("jQuery(function($) { $('.sm-product-page-image [data-lightbox]').lightbox(); });");
+        
+        $this->app->document->addScript('elements:images/tmpl/assets/images.js');
+		$this->app->document->addStylesheet('elements:images/tmpl/assets/images.css');
         ob_start();
         extract($this->getImages());
         include 'tmpl/images.php';

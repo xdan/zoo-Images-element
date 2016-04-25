@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<element type="images" group="XDSoft">
+	<name>Images</name>
+	<author>Chupurnov Valeriy</author>
+	<creationDate>August 2015</creationDate>
+	<copyright></copyright>
+	<authorEmail>chupurnov@gmail.com</authorEmail>
+	<authorUrl>http://www.xdsoft.net</authorUrl>
+	<version>1.0.0</version>
+	<description>Allow select several image files</description>
+	<params></params>
+	<params group="render"></params>
+</element>

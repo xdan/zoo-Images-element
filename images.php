@@ -48,8 +48,42 @@ class ElementImages extends Element {
 		$html[] = '</div>';
 		return implode("\n", $html);
 	}
+	public function getImages() {
+        $folder = $this->get('image_folder');
+		$titles = $images = array();
+        if (!$folder) {
+			if ($this->get('image_files')) {
+                $images = explode('|', trim($this->get('image_files')));
+                $titles = explode('|', trim($this->get('image_titles')));
+            }
+		} else {
+			$dir  = opendir(JPATH_ROOT.'/'.$folder);
+			while ($file = readdir($dir)) {
+				if (is_file(JPATH_ROOT.'/'.$folder.'/'.$file) and preg_match('#(png|jpeg|jpg|gif)$#i', $file)) {
+					$images[] = $folder.'/'.$file;
+					$titles[] = '';
+				}
+			}
+			sort($images);
+			closedir($dir);
+		}
+
+        if (!count($images)) {
+            $images[] = juri::root(true).str_replace(JPATH_ROOT, '', dirname(__FILE__)) . DIRECTORY_SEPARATOR . 'no-photo.png';
+            $titles[] = $this->getItem()->name;
+        }
+
+        return array(
+            'images' => $images,
+            'titles' => $titles,
+        );
+    }
 	public function render($params = array()) {
-		return $this->get('image_files');
+        JHtml::addIncludePath(dirname(__FILE__));
+        ob_start();
+        extract($this->getImages());
+        include 'tmpl/images.php';
+        return ob_get_clean();
 	}
 	public function hasValue($params = array()) {
 		$street = $this->get('image_files');

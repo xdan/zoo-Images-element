@@ -79,6 +79,10 @@ class ElementImages extends Element {
         );
     }
 	public function render($params = array()) {
+        $params = array_merge(array(
+            'width' => 150,
+            'height' => 100,
+        ), $params);
         JHtml::addIncludePath(dirname(__FILE__));
         $this->app->document->addScript('assets:js/lightbox.js');
         $this->app->document->addStylesheet('assets:css/lightbox.css');
@@ -88,7 +92,11 @@ class ElementImages extends Element {
 		$this->app->document->addStylesheet('elements:images/tmpl/assets/images.css');
         ob_start();
         extract($this->getImages());
-        include 'tmpl/images.php';
+        if (isset($params['layout']) and file_exists(dirname(__FILE__).'/tmpl/'.$params['layout'].'.php')) {            
+            include 'tmpl/'.$params['layout'].'.php';
+        } else {            
+            include 'tmpl/images.php';
+        }
         return ob_get_clean();
 	}
 	public function hasValue($params = array()) {

@@ -1,0 +1,1 @@
+<img src="<?php echo juri::root().jhtml::_('xdresizer.thumb', $images[0], $params['width'] ?: 100, $params['height'] ?: 100, 1)?>" alt="<?=$titles[0]?>">

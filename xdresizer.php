@@ -198,11 +198,12 @@ abstract class JHtmlXDResizer {
 		return $newFile;
 	}
 	static public function thumb($img, $width, $height = 0, $mode = 0, $quality = 80) {
-		$path = realpath(JPATH_ROOT . '/' . $img);
-		if (!trim($path) or !is_file($path)) {
+        $path = realpath(JPATH_ROOT . '/' . $img);
+
+        if (!trim($path) or !is_file($path)) {
 			$path = realpath(JPATH_ROOT .'/images/error.gif');
 		}
-		
+        
 		list($imgWidth, $imgHeight) = getimagesize($path);
 		jimport('joomla.filesystem.folder');
 		if (!is_dir(JPATH_ROOT .'/media/thumbs/')) {
@@ -245,7 +246,6 @@ abstract class JHtmlXDResizer {
 			}
 		break;
 		}
-		
 		return preg_replace('#[/]+#','/', str_replace(array(JPATH_ROOT . DIRECTORY_SEPARATOR, '\\'), array('', '/'), $path));
 	}
 

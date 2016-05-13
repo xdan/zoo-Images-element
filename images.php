@@ -69,7 +69,7 @@ class ElementImages extends Element {
 		}
 
         if (!count($images)) {
-            $images[] = juri::root(true).str_replace(JPATH_ROOT, '', dirname(__FILE__)) . DIRECTORY_SEPARATOR . 'no-photo.png';
+            $images[] = str_replace(JPATH_ROOT, '', dirname(__FILE__)) . DIRECTORY_SEPARATOR . 'no-photo.png';
             $titles[] = $this->getItem()->name;
         }
 
@@ -84,6 +84,7 @@ class ElementImages extends Element {
             'height' => 100,
         ), $params);
         JHtml::addIncludePath(dirname(__FILE__));
+        
         $this->app->document->addScript('assets:js/lightbox.js');
         $this->app->document->addStylesheet('assets:css/lightbox.css');
         $this->app->document->addScriptDeclaration("jQuery(function($) { $('.sm-product-page-image [data-lightbox]').lightbox(); });");

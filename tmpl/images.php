@@ -1,7 +1,7 @@
 <div class="sm-product-page-image">
     <div class="sm-product-page-image-preview">
         <? foreach($images as $k=>$image) { ?>
-        <a class="<?=$k ? 'sm-hidden' : ''?>" data-lightbox="group:mygroup1;showNavArrows:1;cyclic:1"  href="<?=$image?>">
+        <a class="<?=$k ? 'sm-hidden' : ''?>" data-lightbox="group:mygroup1;showNavArrows:1;cyclic:1;padding:0"  href="<?=$image?>">
             <img src="<?php echo jhtml::_('xdresizer.thumb', $image, 938, 520, 1)?>" alt="<?=$titles[$k]?>">
         </a>
         <? } ?>
